@@ -14,13 +14,13 @@ public record CriarRelogioRequest(
 
         @NotBlank String tipoMovimento,
         @NotBlank String materialCaixa,
-        @NotBlank String TipoVidro,
+        @NotBlank String tipoVidro,
 
         @Min(0) int resistenciaAguaM,
         @Min(20) int diametroMm,
-        @Min(20) int lugTolugMm,
+        @Min(20) int lugToLugMm,
         @Min(5) int espessuraMm,
-        @Min(10) int larguraMm,
+        @Min(10) int larguraLugMm,
         @Min(1) long precoEmCentavos,
         @NotNull @Size(max = 600) String urlImagem
 ) {
