@@ -1,5 +1,6 @@
 package com.github.fernvndomatos.RelogioApi.service;
 
+import com.github.fernvndomatos.RelogioApi.dto.AtualizarRelogioRequest;
 import com.github.fernvndomatos.RelogioApi.dto.CriarRelogioRequest;
 import com.github.fernvndomatos.RelogioApi.dto.PaginaRelogioDto;
 import com.github.fernvndomatos.RelogioApi.dto.RelogioDto;
@@ -7,6 +8,7 @@ import com.github.fernvndomatos.RelogioApi.entity.Relogio;
 import com.github.fernvndomatos.RelogioApi.entity.enums.MaterialCaixa;
 import com.github.fernvndomatos.RelogioApi.entity.enums.TipoMovimento;
 import com.github.fernvndomatos.RelogioApi.entity.enums.TipoVidro;
+import com.github.fernvndomatos.RelogioApi.exception.NaoEncontradoException;
 import com.github.fernvndomatos.RelogioApi.mapper.RelogioMapper;
 import com.github.fernvndomatos.RelogioApi.repository.RelogioRepository;
 import com.github.fernvndomatos.RelogioApi.service.enums.OrdenacaoRelogios;
@@ -60,7 +62,7 @@ public class RelogioServices {
             case PRECO_CRESC -> Sort.by(Sort.Direction.ASC, "precoEmCentavos");
             case PRECO_DESC -> Sort.by(Sort.Direction.DESC, "precoEmCentavos");
             case DIAMETRO_CRESC -> Sort.by(Sort.Direction.ASC, "diametroMm");
-            case RESISTENCIA_DESC -> Sort.by(Sort.Direction.DESC, "resistenciaAquaM");
+            case RESISTENCIA_DESC -> Sort.by(Sort.Direction.DESC, "resistenciaAguaM");
         };
 
         Pageable pageable = PageRequest.of(paginaSegura - 1, porPaginaSegura, sort);
@@ -108,7 +110,7 @@ public class RelogioServices {
         return relogioMapper.toDto(relogioRepository.save(r));
     }
 
-    public RelogioDto atualizar(UUID id, CriarRelogioRequest request){
+    public RelogioDto atualizar(UUID id, AtualizarRelogioRequest request){
         Relogio r = relogioRepository.findById(id)
                 .orElseThrow(()->new NaoEncontradoException("Relógio Não Encontrado: " + id));
         r.setMarca(request.marca());

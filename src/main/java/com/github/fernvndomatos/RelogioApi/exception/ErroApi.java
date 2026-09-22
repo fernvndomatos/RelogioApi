@@ -11,5 +11,5 @@ public record ErroApi(
         String caminho,
         List<ErroCampo> errosDeCampo
 ) {
-    public record ErroCampo(String campo, String mensagem);
+    public record ErroCampo(String campo, String mensagem){}
 }
