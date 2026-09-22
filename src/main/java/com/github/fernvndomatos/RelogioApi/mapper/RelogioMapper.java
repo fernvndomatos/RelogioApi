@@ -14,6 +14,7 @@ public class RelogioMapper {
         return RelogioDto.builder()
                 .id(r.getId())
                 .marca(r.getMarca())
+                .modelo(r.getModelo())
                 .referencia(r.getReferencia())
                 .tipoMovimento(r.getTipoMovimento().toApi())
                 .materialCaixa(r.getMaterialCaixa().toApi())

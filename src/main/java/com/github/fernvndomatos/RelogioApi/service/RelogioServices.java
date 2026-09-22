@@ -49,7 +49,7 @@ public class RelogioServices {
             String ordenar
     ){
         int paginaSegura = Math.max(1,pagina);
-        int porPaginaSegura = Math.min(60,Math.max(1,pagina));
+        int porPaginaSegura = Math.min(60,Math.max(1,porPagina));
 
         TipoMovimento movimento = TipoMovimento.fromApi(tipoMovimento);
         MaterialCaixa material = MaterialCaixa.fromApi(materialCaixa);
